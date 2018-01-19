@@ -1,6 +1,6 @@
 <?php
 
-namespace SimpleDatabase\Language;
+namespace SimpleDatabase\Person;
 
 use SimpleDatabase\Database\Object;
 
@@ -22,5 +22,5 @@ class Language extends Object
     {
         return $this->name;
     }
-
+    
 }

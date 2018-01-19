@@ -1,13 +1,33 @@
 {
-    "persons": 
-        [{
-            "id" : "100",
-            "firstName" : "Jan",
-            "lastName": "Kowalski"
-        },
-        {
-            "id" : "101",
-            "firstName" : "Adam",
-            "lastName": "Nowak"
-        }]
+    "persons":
+            [
+                {
+                    "id": "100",
+                    "firstName": "Jan",
+                    "lastName": "Kowalski"
+                },
+                {
+                    "id": "101",
+                    "firstName": "Adam",
+                    "lastName": "Nowak"
+                }
+            ],
+    "languages":
+            [
+                {
+                    "name": "PHP"
+                },
+                {
+                    "name": "C++"
+                },
+                {
+                    "name": "Java"
+                }
+            ],
+    "persons_languages":
+            [
+                ["100", "PHP"],
+                ["100", "Java"],
+                ["1001", "PHP"]
+            ]
 }
