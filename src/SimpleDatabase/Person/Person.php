@@ -1,23 +1,27 @@
 <?php
 
-namespace Persons;
+namespace SimpleDatabase\Person;
 
-class Person
+use SimpleDatabase\Database\Object;
+
+class Person extends Object
 {
+    protected static $column_name = 'persons';
+    
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
     
     /**
      * @var string
      */
-    private $firstName;
+    protected $firstName;
     
     /**
      * @var string
      */
-    private $lastName;
+    protected $lastName;
     
     public function __construct($id, $firstName, $lastName)
     {

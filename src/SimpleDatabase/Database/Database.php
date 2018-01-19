@@ -1,6 +1,6 @@
 <?php
 
-namespace Database;
+namespace SimpleDatabase\Database;
 
 class Database
 {
@@ -15,7 +15,7 @@ class Database
      * @var array
      */
     protected $data;
-
+    
     public function __construct($file) 
     {
         if (!file_exists($file)) {
@@ -25,22 +25,43 @@ class Database
         $data = json_decode(file_get_contents($file), true);
         
         if (json_last_error() === JSON_ERROR_NONE) {
-            $this->data = array();
-        } else {
             $this->data = $data;
+        } else {
+            $this->data = array();
         }
     }
     
-    
-    public function getUniqueId()
+    /**
+     * 
+     * @param string $column_name
+     * @return int
+     */
+    public function getUniqueId($column_name)
     {
-        $existingIds = array_column($this->data, 'id');
+        $existingIds = array_column($this->data[$column_name], 'id');
         
         if (!empty($existingIds)) {
             return max($existingIds) + 1;
         } else {
             return 1;
         }
+    }
+    
+    /**
+     * 
+     * @param string $class
+     */
+    public function getAll($class)
+    {        
+        $data = $this->data[$class::getColumnName()];
+        $objArray = array();
+        
+        foreach ($data as $row) {
+            $obj = new $class(...array_values($row));
+            $objArray[] = $obj;
+        }
+        
+        return $objArray;
     }
     
 }
