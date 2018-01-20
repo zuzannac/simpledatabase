@@ -7,7 +7,7 @@ use SimpleDatabase\Database\Object;
 class PersonLanguage extends Object
 {
 
-    protected static $column_name = 'persons_languages';
+    protected static $table_name = 'persons_languages';
 
     /**
      * @var integer
@@ -43,11 +43,11 @@ class PersonLanguage extends Object
     public static function getLanguagesNamesByPersonId($personId)
     {
         global $database;
-        $personsLanguages = $database->getAll('SimpleDatabase\Person\PersonLanguage');
+        $personsLanguages = $database->getAll(self::class);
 
         $languages = array_filter(
                 $personsLanguages, function ($o) use ($personId) {
-            return $o->getPersonId() == $personId;
+            return $o->personId == $personId;
         }
         );
 
@@ -56,4 +56,24 @@ class PersonLanguage extends Object
         }, $languages);
     }
 
+    public function addToDatabase($personId, array $languages)
+    {
+        global $database;
+                
+        foreach ($languages as $languageName) {
+            
+            if (!$database->exists(\SimpleDatabase\Person\Language::getTableName(), array('name' => $languageName))) {
+                $database->add(\SimpleDatabase\Person\Language::getTableName(), array('name' => $languageName));
+            }
+            
+            $database->add(self::$table_name, array('personId' => $personId, 'languageName' => $languageName));
+        }
+    }
+    
+    public static function removePersonFromDatabase($id)
+    {
+        global $database;
+        $database->remove(self::$table_name, array('personId' => $id));
+    }
+    
 }

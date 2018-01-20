@@ -6,7 +6,7 @@ use SimpleDatabase\Database\Object;
 
 class Language extends Object
 {
-    protected static $column_name = 'languages';
+    protected static $table_name = 'languages';
         
     /**
      * @var string
@@ -21,6 +21,18 @@ class Language extends Object
     public function getName()
     {
         return $this->name;
+    }
+    
+    public static function addToDatabase($name)
+    {
+        global $database;
+        $database->add(self::$table_name, array('name' => $name));
+    }
+    
+    public static function removeFromDatabase($name)
+    {
+        global $database;
+        $database->remove(self::$table_name, array('name' => $name));
     }
     
 }

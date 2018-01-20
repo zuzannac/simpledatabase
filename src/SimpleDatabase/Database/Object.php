@@ -4,10 +4,10 @@ namespace SimpleDatabase\Database;
 
 abstract class Object
 {
-    protected static $column_name;
+    protected static $table_name;
     
-    public static function getColumnName()
+    public static function getTableName()
     {
-        return static::$column_name;
+        return static::$table_name;
     }
 }
