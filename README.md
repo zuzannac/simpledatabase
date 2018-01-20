@@ -5,6 +5,8 @@ Np.
 1. Jan Kowalski - (php, java)
 2. Piotr Nowak - (c++, php)
 
+--------------
+
 1. Lista osób
 ./demo.php list
 Wyświetla wszystkie osoby i ich umiejętności
