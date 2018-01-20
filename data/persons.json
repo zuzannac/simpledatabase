@@ -15,19 +15,19 @@
     "languages":
             [
                 {
-                    "name": "PHP"
+                    "name": "php"
                 },
                 {
-                    "name": "C++"
+                    "name": "c++"
                 },
                 {
-                    "name": "Java"
+                    "name": "java"
                 }
             ],
     "persons_languages":
             [
-                ["100", "PHP"],
-                ["100", "Java"],
-                ["1001", "PHP"]
+                ["100", "php"],
+                ["100", "java"],
+                ["101", "php"]
             ]
 }

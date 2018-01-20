@@ -30,6 +30,11 @@ class Person extends Object
         $this->lastName = $lastName;
     }
     
+    public function getId()
+    {
+        return $this->id;
+    }
+    
     public function getFirstname()
     {
         return $this->firstName;
@@ -48,6 +53,10 @@ class Person extends Object
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
+    }
+    
+    public function toString() {
+        return $this->id . ". " . $this->firstName . " " . $this->lastName;
     }
 
 }
